@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Gridiron Reborn 3D</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" aria-label="3D football field"></canvas>
+    <section id="menu" class="panel hero-panel">
+      <p class="eyebrow">CLEAN-ROOM 3D FOOTBALL REMAKE</p>
+      <h1>GRIDIRON<br><span>REBORN 3D</span></h1>
+      <p class="subtitle">Fast arcade football with smarter teammates, deeper progression, and a true 3D field.</p>
+      <div class="menu-actions"><button id="playBtn" class="primary">Play Game</button><button id="careerBtn">Career Hub</button><button id="practiceBtn">Practice</button></div>
+      <div class="feature-strip"><span>3D Stadium</span><span>Smart AI</span><span>Career</span><span>Lv.100 + Rebirth</span><span>10★ Team</span></div>
+    </section>
+    <section id="hud" class="hidden" aria-live="polite">
+      <div class="scoreboard"><div><small>YOU</small><strong id="homeScore">0</strong></div><div class="center"><strong id="quarter">Q1</strong><span id="clock">2:00</span><small id="downText">1st & 10</small></div><div><small>CPU</small><strong id="awayScore">0</strong></div></div>
+      <div id="driveInfo" class="drive-info">Ball on 25</div><div id="targetBadge" class="target-badge">Target: WR1</div><div class="hint" id="hint">Choose a play</div><button id="pauseBtn" class="icon-btn" aria-label="Pause">Ⅱ</button>
+    </section>
+    <section id="playCall" class="panel bottom-panel hidden"><p class="eyebrow">CHOOSE PLAY</p><div class="play-grid">
+      <button data-play="short"><strong>Quick Pass</strong><small>Safe routes</small></button><button data-play="deep"><strong>Deep Shot</strong><small>Vertical routes</small></button><button data-play="run"><strong>Run</strong><small>Power blocking</small></button><button data-play="screen"><strong>Screen</strong><small>RB in space</small></button><button data-play="punt"><strong>Punt</strong><small>Flip field</small></button><button data-play="fieldGoal"><strong>Field Goal</strong><small id="fgDistance">-- yd</small></button>
+    </div></section>
+    <section id="pausePanel" class="panel modal hidden"><h2>Paused</h2><button id="resumeBtn" class="primary">Resume</button><button id="restartBtn">Restart Game</button><button id="quitBtn">Main Menu</button></section>
+    <section id="careerPanel" class="panel career-panel hidden"><div class="career-head"><div><p class="eyebrow">CAREER HUB</p><h2 id="teamName">Metro Comets</h2></div><button id="closeCareer">×</button></div><div class="career-summary"><div><small>Season</small><strong id="seasonText">1</strong></div><div><small>Record</small><strong id="recordText">0-0</strong></div><div><small>Credits</small><strong id="creditsText">10</strong></div><div><small>Team</small><strong id="starsText">★★★☆☆</strong></div></div><div class="career-columns"><div><h3>Roster</h3><div id="rosterList" class="roster"></div></div><div><h3>Facilities</h3><div id="facilityList" class="facility-list"></div><h3>Career Actions</h3><div class="career-actions"><button id="trainTeam">Team Training · 2 CC</button><button id="healTeam">Rehab Team · 2 CC</button><button id="newSeason">Advance Season</button></div></div></div></section>
+    <div id="toast" class="toast hidden" role="status"></div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
