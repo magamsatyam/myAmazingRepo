@@ -1,0 +1,10 @@
+{
+  "name": "gridiron-reborn-3d",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "check": "node --check src/main.js && node --check src/game.js && node --check src/ai.js && node --check src/career.js && node --check src/ui.js"
+  }
+}
