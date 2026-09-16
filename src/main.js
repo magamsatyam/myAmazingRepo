@@ -1,0 +1,17 @@
+import {Career} from './career.js';
+import {Game} from './game.js';
+import {UI} from './ui.js';
+const career=new Career();const ui=new UI(career);const game=new Game(document.getElementById('game'),career,ui);game.tick();
+const $=id=>document.getElementById(id);
+$('playBtn').addEventListener('click',()=>game.start(false));
+$('practiceBtn').addEventListener('click',()=>game.start(true));
+$('careerBtn').addEventListener('click',()=>ui.showCareer());
+$('closeCareer').addEventListener('click',()=>ui.showMenu());
+document.querySelectorAll('[data-play]').forEach(b=>b.addEventListener('click',()=>game.choosePlay(b.dataset.play)));
+$('pauseBtn').addEventListener('click',()=>{if(game.state==='paused')return;game.prevState=game.state;game.state='paused';ui.pause.classList.remove('hidden')});
+$('resumeBtn').addEventListener('click',()=>{game.state=game.prevState||'playcall';ui.pause.classList.add('hidden')});
+$('restartBtn').addEventListener('click',()=>{ui.pause.classList.add('hidden');game.start(game.practice)});
+$('quitBtn').addEventListener('click',()=>{game.state='menu';game.clearPlayers();game.ball.visible=false;ui.showMenu()});
+$('trainTeam').addEventListener('click',()=>{ui.toast(career.trainAll()?'Team trained':'Not enough credits');ui.renderCareer()});
+$('healTeam').addEventListener('click',()=>{ui.toast(career.healAll()?'Team recovered':'Not enough credits');ui.renderCareer()});
+$('newSeason').addEventListener('click',()=>{career.advanceSeason();ui.renderCareer();ui.toast('New season started')});
